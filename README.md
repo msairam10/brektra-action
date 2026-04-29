@@ -4,7 +4,7 @@ Runs an autonomous Brektra scan against your PR preview and fails the build if a
 
 ## Quick start
 
-1. Create a Brektra API key at <https://brektra.com/settings/api-keys>. Pick the `scans:ci` scope. Copy the key — it's shown once.
+1. Create a Brektra API key at <https://brektra.com/settings/api-keys>. Pick the `scans:ci` scope. Copy the key. It's shown once.
 2. Add it to your repo as a secret named `BREKTRA_API_KEY`.
 3. Drop the workflow below into `.github/workflows/brektra.yml`.
 
@@ -64,8 +64,8 @@ jobs:
 
 ## Pinning
 
-- `@v1` (recommended) — moves with patch and minor releases of the v1 line.
-- `@v1.0.0` — pinned, never moves. Use this if you need bit-for-bit reproducibility.
+- `@v1` (recommended): moves with patch and minor releases of the v1 line.
+- `@v1.0.0`: pinned, never moves. Use this if you need bit-for-bit reproducibility.
 
 ## Plan requirement
 
@@ -73,9 +73,9 @@ CI scanning is on Pro and above. Free and Starter accounts get a `402 ci_not_ava
 
 ## Troubleshooting
 
-- **"target host not in a verified domain"** — add the preview hostname under <https://brektra.com/targets> and verify the TXT record. Vercel preview URLs change per PR; verify the wildcard parent (e.g. `vercel.app` is not allowed; use a CNAME-stable subdomain like `pr-*.preview.example.com`).
-- **"scan_limit_reached"** — your billing cycle is exhausted. Upgrade or wait for the cycle reset shown in the response.
-- **"GITHUB_TOKEN not set, skipping PR comment"** — your job needs `permissions: pull-requests: write`. Add it to the job that runs the action.
+- **"target host not in a verified domain"**: add the preview hostname under <https://brektra.com/targets> and verify the TXT record. Vercel preview URLs change per PR; verify the wildcard parent (e.g. `vercel.app` is not allowed; use a CNAME-stable subdomain like `pr-*.preview.example.com`).
+- **"scan_limit_reached"**: your billing cycle is exhausted. Upgrade or wait for the cycle reset shown in the response.
+- **"GITHUB_TOKEN not set, skipping PR comment"**: your job needs `permissions: pull-requests: write`. Add it to the job that runs the action.
 
 ## Reporting issues
 
