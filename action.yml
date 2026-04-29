@@ -1,0 +1,45 @@
+name: "Brektra Security Scan"
+description: "Run autonomous security tests against your PR preview. Fails the build if Brektra confirms an exploit."
+author: "Brektra"
+
+inputs:
+  api_key:
+    description: "Brektra API key (bk_...). Store as a repo secret."
+    required: true
+  target_url:
+    description: "URL of the PR preview to scan."
+    required: true
+  surfaces:
+    description: "Comma-separated surfaces. ai,web,api,cloud,hosts."
+    required: false
+    default: "ai,web,api"
+  mode:
+    description: "safe or aggressive. Aggressive requires per-domain enablement."
+    required: false
+    default: "safe"
+  fail_on_severity:
+    description: "Fail the check if any finding is at or above this severity. info|low|medium|high|critical."
+    required: false
+    default: "high"
+  timeout_minutes:
+    description: "Hard timeout. Action fails if the scan does not finish in this window."
+    required: false
+    default: "10"
+
+outputs:
+  findings_count:
+    description: "Total findings reported by the scan."
+  highest_severity:
+    description: "Highest severity in this scan, or empty if no findings."
+  replay_url:
+    description: "Link to the full Brektra replay."
+  scan_id:
+    description: "Brektra scan id."
+
+runs:
+  using: "node20"
+  main: "dist/index.js"
+
+branding:
+  icon: "shield"
+  color: "red"
