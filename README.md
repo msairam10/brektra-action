@@ -62,11 +62,6 @@ jobs:
 - The action fails the check if any finding meets or exceeds `fail_on_severity`. Combined with branch protection, this blocks merge.
 - After a fix is merged, Brektra automatically re-tests against the patched preview and updates the PR comment.
 
-## Pinning
-
-- `@v1` (recommended): moves with patch and minor releases of the v1 line.
-- `@v1.0.0`: pinned, never moves. Use this if you need bit-for-bit reproducibility.
-
 ## Plan requirement
 
 CI scanning is on Pro and above. Free and Starter accounts get a `402 ci_not_available` from the API and the action fails fast with an upgrade link.
